@@ -16,11 +16,17 @@ function photographerTemplate(data) {
         link.appendChild(img);
         link.appendChild(h2);
 
-        const p = document.createElement('p');
-        p.textContent = `${city}, ${country}`
-        
+        const locationP = document.createElement('p');
+        locationP.textContent = `${city}, ${country}`
+        const taglineP = document.createElement('p')
+        taglineP.textContent = tagline
+        const priceP = document.createElement('p')
+        priceP.textContent = `${price}€/jour`
+
         article.appendChild(link);
-        article.appendChild(p)
+        article.appendChild(locationP)
+        article.appendChild(taglineP)
+        article.appendChild(priceP)
         return (article);
     }
     return { name, picture, getUserCardDOM }
