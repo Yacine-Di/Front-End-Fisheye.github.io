@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
     
@@ -7,12 +7,13 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.setAttribute("alt", `picture of: ${name}`)
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         
         const link = document.createElement('a')
-        link.href = "#"
+        link.href = `photographer.html?id=${id}`
         link.appendChild(img);
         link.appendChild(h2);
 

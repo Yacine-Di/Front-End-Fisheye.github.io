@@ -3,9 +3,50 @@
 }
 
 .photograph-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 0 50px
+}
+
+/* YD*/
+.photograph-header article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.photograph-header article h1 {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 100;
+    margin: 0px;
+}
+
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.photograph-header article p{
+    margin: 20px 0px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.photograph-header article p:nth-child(2){
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.photograph-header article p:nth-child(3){
+    font-size: 18px;
 }
 
 .contact_button {
