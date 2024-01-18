@@ -2,6 +2,17 @@
     display: none;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+
 .photograph-header {
     display: flex;
     flex-direction: row;
@@ -47,6 +58,7 @@
 
 .photograph-header article p:nth-child(3){
     font-size: 18px;
+    color: #525252;
 }
 
 .contact_button {

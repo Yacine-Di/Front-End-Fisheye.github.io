@@ -1,10 +1,10 @@
 async function init(){
-    //je récupère l'id dans l'url
+    //récupération de l'id dans l'url
     const photographerId = getphotographerId()
     console.log(photographerId)
-    //je récupère les données du photographe associé à l'id
+    //récupération des données du photographe associé à l'id
     const photographer = await getphotographer(photographerId)
-    //j'affiche les données
+    //affichage des données
     displayData(photographer)
 }
 
