@@ -30,5 +30,5 @@ function photographerTemplate(data) {
         article.appendChild(priceP)
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, city, country, tagline, price, getUserCardDOM }
 }
