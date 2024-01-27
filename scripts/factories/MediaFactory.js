@@ -3,10 +3,10 @@ class MediaFactory {
         // Si le type est une image alors je retourne le format image
         if (type === 'image'){
             return new PhotoMedia(data)
-        // Sinon regarde si c'est un type mp4
+        // Sinon je regarde si c'est une type video
         } else if (type === "video") {
             return new VideoMedia(data)
-        // Si c'est aucun des deux alors renvoie une erreur
+        // Si ce n'est aucun des deux alors je renvoie une erreur
         } else {
             throw 'Unknow type format'
         }

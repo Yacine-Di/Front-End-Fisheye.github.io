@@ -1,6 +1,6 @@
 async function init(){
     //récupération de l'id dans l'url
-    const photographerId = getphotographerId()
+    const photographerId = getphotographerIdFromUrl()
     console.log(photographerId)
     //récupération des données du photographe associé à l'id
     const photographer = await getphotographer(photographerId)
@@ -10,13 +10,13 @@ async function init(){
     //recuperation des media liés au photographe
     const medias = await getMedias(photographerId)
 
-    const photos =  getFilteredMedia(medias,'image')
+    const photos = getFilteredMedia(medias,'image')
     const videos = getFilteredMedia(medias,'video')
     //affichage des medias
     displayMedia(photos)
 }
 
-function getphotographerId(){
+function getphotographerIdFromUrl(){
     return new URL(location.href).searchParams.get("id")
 }
 
@@ -60,7 +60,7 @@ async function getMedias(Id){
     return medias
 }
 
-async function getFilteredMedia(medias, type){
+function getFilteredMedia(medias, type){
     const filterMedia = []
 
     medias.forEach(media => {
@@ -68,13 +68,29 @@ async function getFilteredMedia(medias, type){
             filterMedia.push(new MediaFactory(media, type))
         }
     });
-    console.log(filterMedia)
 
     return filterMedia
 }
 
-async function displayMedia(medias){
+function displayMedia(medias){
+    const mediasWrapper =  document.querySelector(".medias-wrapper")
 
+    medias.forEach(media => {
+        const mediaWrapper = document.createElement('article')
+
+        const imgWrapper = document.createElement('img')
+        imgWrapper.setAttribute("src",media.image)
+
+        const titleAndLikeWrapper = document.createElement('article')
+        const title = document.createElement('p')
+        title.innerHTML = media._title
+        const like = document.createElement('p')
+        like.innerHTML = media._likes
+        titleAndLikeWrapper.append(title,like)
+
+        mediaWrapper.append(imgWrapper,titleAndLikeWrapper)
+        mediasWrapper.appendChild(mediaWrapper)
+    });
 }
 
 init()

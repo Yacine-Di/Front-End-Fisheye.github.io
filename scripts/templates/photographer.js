@@ -24,10 +24,8 @@ function photographerTemplate(data) {
         const priceP = document.createElement('p')
         priceP.textContent = `${price}€/jour`
 
-        article.appendChild(link);
-        article.appendChild(locationP)
-        article.appendChild(taglineP)
-        article.appendChild(priceP)
+        article.append(link,locationP,taglineP,priceP);
+        
         return (article);
     }
     return { name, picture, city, country, tagline, price, getUserCardDOM }

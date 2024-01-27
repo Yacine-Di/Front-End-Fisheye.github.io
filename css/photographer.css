@@ -6,22 +6,37 @@ header {
     display: flex;
     align-items: center;
     height: 90px;
+    width: 100%;
 }
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+}
+
+body{
+    width: 1440px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .photograph-header {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
-    padding: 0 50px
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
 /* YD*/
@@ -59,6 +74,43 @@ header {
 .photograph-header article p:nth-child(3){
     font-size: 18px;
     color: #525252;
+}
+
+.medias-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.medias-wrapper article{
+    margin-right: 50px;
+}
+
+.medias-wrapper article:nth-child(3n){
+    margin: 0px;
+}
+
+.medias-wrapper article img{
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.medias-wrapper article article{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+
+}
+
+.medias-wrapper article p{
+    font-family: 'DM Sans', sans-serif;
+    color: #901C1C;
 }
 
 .contact_button {
