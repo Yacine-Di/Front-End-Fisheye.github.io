@@ -28,28 +28,7 @@ async function getphotographer(photographerId) {
 }
 
 async function displayData(photographer) {
-    const photographerHeader = document.querySelector(".photograph-header");
-
-    const photographerModel = photographerTemplate(photographer);
-    const article = document.createElement('article')
-    const h1 = document.createElement('h1')
-    h1.textContent = photographerModel.name
-
-    const locationP = document.createElement('p')
-    locationP.textContent = `${photographerModel.city}, ${photographerModel.country}`
-    const taglineP = document.createElement('p')
-    taglineP.textContent = photographerModel.tagline
-    article.appendChild(h1)
-    article.appendChild(locationP)
-    article.appendChild(taglineP)
-
-    const img = document.createElement('img')
-    img.setAttribute("src", photographerModel.picture)
-    img.setAttribute("alt", `picture of: ${photographerModel.name}`)
-
-    const button = document.querySelector(".contact_button")
-    photographerHeader.prepend(article, button)
-    photographerHeader.appendChild(img)
+    photographerHeaderTemplate(photographer)
 }
 
 async function getMedias(Id) {

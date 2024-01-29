@@ -14,7 +14,8 @@ class PhotoTemplate{
         const title = document.createElement('p')
         title.innerHTML = this._photo.title
         const like = document.createElement('p')
-        like.innerHTML = this._photo.likes
+        const heartIcon = `<i class="fa-solid fa-heart"></i>`
+        like.innerHTML = `${this._photo.likes} ${heartIcon}`
         titleAndLikeWrapper.append(title, like)
 
         mediaWrapper.append(imgWrapper, titleAndLikeWrapper)

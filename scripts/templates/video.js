@@ -11,7 +11,7 @@ class VideoTemplate{
                 </video>
                 <article>
                     <p>${this._video.title}</p>
-                    <p>${this._video.likes}</p>
+                    <p>${this._video.likes} <i class="fa-solid fa-heart"></i></p>
                 </article>
             `
             const videoWrapper = document.createElement('article')
