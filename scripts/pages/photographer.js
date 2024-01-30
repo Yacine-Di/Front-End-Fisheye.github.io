@@ -15,6 +15,8 @@ async function init() {
     const mediasWrapper = document.querySelector('.medias-wrapper')
     displayPhotos(photos,mediasWrapper)
     displayVideos(videos,mediasWrapper)
+
+    displayNameInModal(photographer)
 }
 
 function getphotographerIdFromUrl() {
@@ -60,6 +62,11 @@ function displayVideos(videos, mediasWrapper) {
         const videoTemplate = new VideoTemplate(video, mediasWrapper)
         videoTemplate.displayVideoTemplate()
     })
+}
+
+function displayNameInModal(photographer){
+    const modalHeader = document.querySelector(".modal h2")
+    modalHeader.innerHTML += `<br>${photographer.name}`
 }
 
 init()
