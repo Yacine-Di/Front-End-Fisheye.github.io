@@ -79,20 +79,15 @@ main{
 /*Medias*/
 .medias-wrapper{
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     margin-top: 50px;
 }
 
 .medias-wrapper article{
-    margin-right: 50px;
-}
-
-.medias-wrapper article:nth-child(3n){
-    margin: 0px;
+    margin-bottom: 20px;
 }
 
 .medias-wrapper article img{
@@ -111,13 +106,47 @@ main{
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
-
 }
 
 .medias-wrapper article p{
     font-family: 'DM Sans', sans-serif;
     color: #901C1C;
+    margin: 5px;
 }
+
+/*Lightbox*/
+
+.media-modal{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.icon_img-article{
+    display: flex;
+    flex-direction: row;   
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.icon_img-article img{
+    margin-right: 30px;
+    
+}
+
+.chevron_xmark-article {
+    display: grid;
+    grid-template-rows: 45% 50%;
+    padding-top: 10px;
+}
+
+.media-modal .picture {
+    width: 1050px;
+    height: 900px;
+    margin: 0px;
+}
+
 
 /*Modal*/
 .contact_button {
