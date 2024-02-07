@@ -1,34 +1,39 @@
-class DataApi{
+class DataApi {
     /**
      * 
      * @param {string} url 
      */
-    constructor(){
+    constructor() {
         this._url = "data/photographers.json"
     }
 
-    async get(){
+    async get() {
         return fetch(this._url)
             .then(res => res.json())
     }
 }
 
-class PhotographersApi extends DataApi{
-    constructor(){
+class PhotographersApi extends DataApi {
+    constructor() {
         super()
     }
 
-    async getPhotographers(){
+    async getPhotographers() {
         return await this.get().then(res => res.photographers)
+    }
+
+    async getPhotographersById(photographerId) {
+        let photographers = await this.get().then(res => res.photographers)
+        return photographers.find(photographer => photographer.id == photographerId)
     }
 }
 
-class MediasApi extends DataApi{
-    constructor(){
+class MediasApi extends DataApi {
+    constructor() {
         super()
     }
 
-    async getMedias(Id){
+    async getMedias(Id) {
         const medias = await this.get().then(res => res.media)
         return medias.filter(media => media.photographerId == Id)
     }

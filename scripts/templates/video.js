@@ -1,13 +1,14 @@
 class VideoTemplate{
-    constructor(video, mediasWrapper){
+    constructor(video, mediasWrapper, mediaIndex){
         this._video = video
         this._mediasWrapper = mediasWrapper
+        this._mediaIndex = mediaIndex
     }
 
     displayVideoTemplate() {
             const player = `
-                <video controls width="200" height="200">
-                    <source src="${this._video.video}" type="video/mp4"/>
+                <video controls media-index="${this._mediaIndex}" width="200" height="200">
+                    <source src="${this._video.path}" type="video/mp4"/>
                 </video>
                 <article>
                     <p>${this._video.title}</p>

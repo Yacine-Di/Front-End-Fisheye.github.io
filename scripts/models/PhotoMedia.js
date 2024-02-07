@@ -21,7 +21,7 @@ class PhotoMedia{
         return this._title
     }
 
-    get image(){
+    get path(){
         return `/assets/medias/${this._image}`
     }
 

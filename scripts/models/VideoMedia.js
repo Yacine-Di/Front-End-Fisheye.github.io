@@ -21,7 +21,7 @@ class VideoMedia{
         return this._title
     }
 
-    get video(){
+    get path(){
         return `/assets/medias/${this._video}`
     }
 

@@ -90,15 +90,12 @@ main{
     margin-bottom: 20px;
 }
 
-.medias-wrapper article img{
+.medias-wrapper article img
+,.medias-wrapper article video{
     width: 350px;
     height: 300px;
     object-fit: cover;
-}
-
-.medias-wrapper article video{
-    width: 350px;
-    height: 300px;
+    cursor: pointer;
 }
 
 .medias-wrapper article article{
@@ -115,11 +112,23 @@ main{
 }
 
 /*Lightbox*/
-
 .media-modal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox{
+    position: absolute;
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
 }
 
 .icon_img-article{
@@ -141,12 +150,17 @@ main{
     padding-top: 10px;
 }
 
-.media-modal .picture {
+.lightbox .picture,
+.lightbox video {
     width: 1050px;
     height: 900px;
     margin: 0px;
+    object-fit: cover;
 }
 
+.close-btn, .left-media, .right-media{
+    cursor: pointer;
+}
 
 /*Modal*/
 .contact_button {
