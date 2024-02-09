@@ -25,11 +25,13 @@ async function init() {
 async function displayLightBox(){
     const medias = document.querySelectorAll("[media-index]")
     medias.forEach(media => {
-        media.addEventListener("click", () => {
-            const lightboxModal = new LightboxModal(media, medias)
-            lightboxModal.createModal()
+        media.addEventListener("click", (e) => {
+            e.preventDefault()
+            new LightboxModal(media, medias)
         })
     })
+
+
 }
 
 async function getphotographerIdFromUrl() {
@@ -71,7 +73,7 @@ function displayPhotos(photos, videos, mediasWrapper) {
         photoTemplate.displayPhotoTemplate()
         mediaIndex++
     })
-    
+
     videos.forEach(video => {
         const videoTemplate = new VideoTemplate(video, mediasWrapper, mediaIndex)
         videoTemplate.displayVideoTemplate()

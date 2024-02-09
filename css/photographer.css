@@ -150,8 +150,7 @@ main{
     padding-top: 10px;
 }
 
-.lightbox .picture,
-.lightbox video {
+.lightbox .media{
     width: 1050px;
     height: 900px;
     margin: 0px;
