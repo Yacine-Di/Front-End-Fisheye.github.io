@@ -27,8 +27,9 @@ class LightboxModal {
                 <article class="chevron_xmark-article">
                     <img class="close-btn" src="assets/icons/close-red.svg" alt="">
                     <img class= "right-media" src="assets/icons/chevron-right.svg" alt="">
-                    </article>
+                </article>
             </article>
+            <p>${this._media.title}</p>
         `
 
         dom.innerHTML = lightbox
@@ -42,13 +43,14 @@ class LightboxModal {
     }
 
     /**
-     * 
+     * Met à jour la lightbox avec le media suivant
      * @param {MouseEvent / KeyboardEvent} e 
      */
     next(e) {
         e.preventDefault()
         const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
         const childNode = this.lightboxWrapper.querySelector('.media')
+        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
         let index = this._media.getAttribute('media-index')
 
         index++
@@ -59,12 +61,19 @@ class LightboxModal {
         
         parentNode.removeChild(childNode)
         parentNode.appendChild(this.getChild(this._media.tagName))
+        titleNode.innerHTML = ""
+        titleNode.innerHTML = this._media.title
     }
-
+    
+    /**
+     * Met à jour la lightbox avec le media precedent
+     * @param {MouseEvent / KeyboardEvent} e 
+     */
     prev(e) {
         e.preventDefault()
         const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
         const childNode = this.lightboxWrapper.querySelector('.media')
+        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
         let index = this._media.getAttribute('media-index')
 
         index--
@@ -75,12 +84,13 @@ class LightboxModal {
         
         parentNode.removeChild(childNode)
         parentNode.appendChild(this.getChild(this._media.tagName))
+        titleNode.innerHTML = ""
+        titleNode.innerHTML = this._media.title
     }
 
     getChild(tagName){
         if(tagName === 'IMG'){
             const img = new Image()
-
             img.src = this._media.src
             img.alt = this._media.title
             img.classList.add('media')
@@ -89,28 +99,14 @@ class LightboxModal {
         } else{
             const video = document.createElement('video')
             const source = document.createElement('source')
-
             video.classList.add('media')
             video.controls = "controls"
             source.setAttribute('type', 'video/mp4')
             source.src = this._media.currentSrc
             video.appendChild(source)
-            
+
             return video
         }
-    }
-
-    getMediaTag() {
-        if (this._media.tagName === 'IMG') {
-            return `<img class="media" src="${this._media.src}" alt="${this._media.title}"></img>`
-        } else if (this._media.tagName === 'VIDEO') {
-            return `
-                <video class="media" controls>
-                    <source src="${this._media.currentSrc}" type="video/mp4"/>
-                </video>
-            `
-        }
-        return "No Media Found"
     }
 
     /**
@@ -135,34 +131,6 @@ class LightboxModal {
             this.next(e)
         } else if(e.key === 'ArrowLeft'){
             this.prev(e)
-        }
-    }
-
-    /**
-     * 
-     * @param {int} index 
-     */
-    getNextMedia(index) {
-        index++
-        if (index == this._medias.length) {
-            index = 0
-            this._media = this._medias[index]
-        } else {
-            this._media = this._medias[index]
-        }
-    }
-
-    /**
-     * 
-     * @param {int} index 
-     */
-    getPreviousMedia(index) {
-        index--
-        if (index < 0) {
-            index = this._medias.length - 1
-            this._media = this._medias[index]
-        } else {
-            this._media = this._medias[index]
         }
     }
 }

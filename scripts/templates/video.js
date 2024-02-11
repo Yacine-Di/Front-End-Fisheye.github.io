@@ -7,7 +7,7 @@ class VideoTemplate{
 
     displayVideoTemplate() {
             const player = `
-                <video controls media-index="${this._mediaIndex}" width="200" height="200">
+                <video controls media-index="${this._mediaIndex}" title="${this._video.title}">
                     <source src="${this._video.path}" type="video/mp4"/>
                 </video>
                 <article>

@@ -123,12 +123,22 @@ main{
     display: none;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .lightbox{
-    position: absolute;
     display: flex;
     flex-direction: row;
+}
+
+.media-modal p{
+    z-index: 1;
+    width: 1050px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    text-align: left;
+    color: #901C1C;
+    margin: 5px;
 }
 
 .icon_img-article{
@@ -141,7 +151,6 @@ main{
 
 .icon_img-article img{
     margin-right: 30px;
-    
 }
 
 .chevron_xmark-article {

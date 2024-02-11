@@ -30,8 +30,6 @@ async function displayLightBox(){
             new LightboxModal(media, medias)
         })
     })
-
-
 }
 
 async function getphotographerIdFromUrl() {
