@@ -22,7 +22,7 @@ class PhotoMedia{
     }
 
     get path(){
-        return `/assets/medias/${this._image}`
+        return `assets/medias/${this._image}`
     }
 
     get likes(){

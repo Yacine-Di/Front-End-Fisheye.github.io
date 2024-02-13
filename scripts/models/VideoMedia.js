@@ -22,7 +22,7 @@ class VideoMedia{
     }
 
     get path(){
-        return `/assets/medias/${this._video}`
+        return `assets/medias/${this._video}`
     }
 
     get likes(){
