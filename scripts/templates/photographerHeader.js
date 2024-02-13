@@ -1,5 +1,5 @@
 function photographerHeaderTemplate(photographer){
-    const { name, portrait, city, country, tagline, price, id } = photographer;
+    const { name, portrait, city, country, tagline } = photographer;
     const picture = `assets/photographers/${portrait}`;
 
     const photographerHeader = document.querySelector(".photographer-header");

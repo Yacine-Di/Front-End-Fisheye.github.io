@@ -6,7 +6,14 @@ header {
     display: flex;
     align-items: center;
     height: 90px;
-    width: 100%;
+    margin: 0 auto;
+}
+
+header,
+.photographer-header,
+.sorter-form-wrapper,
+.medias-wrapper{
+    width: 1240px;
 }
 
 .logo {
@@ -28,7 +35,6 @@ main{
 }
 
 .photographer-header {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -76,9 +82,69 @@ main{
     color: #525252;
 }
 
-/*Medias*/
+.insert{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 370px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    top: 92%;
+    right: 3%;
+    background-color: #DB8876;
+}
+
+.insert p{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* Sorter */
+.sorter-form{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.sorter-form label{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 30px;
+}
+
+.sorter-form select{
+    width: 170px;
+    border: none;
+    background-color: #901C1C;
+    color: white;
+    height: 56px;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+
+}
+.sorter-form .divider{
+	font-size: 1px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+select option{
+    font-size: 80px;
+}
+
+.sorter-form option,
+.sorter-form select,
+.sorter-form label{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+/* Medias */
 .medias-wrapper{
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, auto);
     justify-content: space-between;

@@ -1,29 +1,96 @@
 async function init() {
     //récupération de l'id dans l'url
-    const photographerId = await getphotographerIdFromUrl()
+    const photographerId = new URL(location.href).searchParams.get("id")
+
     //récupération des données du photographe associé à l'id
-    const photographer = await getPhotographer(photographerId)
+    const photographer = await new PhotographersApi().getPhotographersById(photographerId)
+
     //affichage des données
-    displayData(photographer)
+    photographerHeaderTemplate(photographer)
 
     //recuperation des media liés au photographe
-    const medias = await getMedias(photographerId)
+    const medias = await new MediasApi().getMedias(photographerId)
 
     const photos = getFilteredMedia(medias, 'image')
     const videos = getFilteredMedia(medias, 'video')
 
+    const likes = await displayInsert(medias, photographer)
     //affichage des medias
     const mediasWrapper = document.querySelector('.medias-wrapper')
-    displayPhotos(photos, videos, mediasWrapper)
+    displayMedias(photos, videos, mediasWrapper)
 
-    displayNameInContactModal(photographer)
-    const mediastest = document.querySelectorAll(".medias-wrapper .media-index").No
+    manageLikes(likes)
+    //affichage du nom dans la modal de contact
+    const modalHeader = document.querySelector('.modal h2')
+    modalHeader.innerHTML += `<br>${photographer.name}`
     
     await displayLightBox()
+
+    const Sorter = new SorterForm(medias)
+    Sorter.createSorterForm()
 }
 
+async function manageLikes(){
+    const insertLikesNode = document.querySelector('.insert span')
+
+    document.querySelectorAll('.medias-wrapper .fa-heart')
+        .forEach(like =>{
+            like.addEventListener('click', (e) => {
+                e.preventDefault()
+                
+                console.log(like.getAttribute('liked'))
+                if(like.getAttribute('liked') === "false"){
+                    updateLikes(1, e, insertLikesNode)
+                    like.setAttribute('liked', "true")
+
+                } else{
+                    updateLikes(-1, e, insertLikesNode)
+                    like.setAttribute('liked', "false")
+                }
+        })
+    })
+}
+
+async function updateLikes(value, e, insertLikesNode){
+    let totalLikes = parseInt(insertLikesNode.innerText)
+    totalLikes += value
+
+    let mediaLikesNode = e.currentTarget.parentNode.querySelector('span')
+    let currentLikes = parseInt(mediaLikesNode.textContent)
+    currentLikes += value
+    
+    mediaLikesNode.textContent = `${currentLikes}`
+    insertLikesNode.textContent = `${totalLikes}`
+}
+
+/**
+ * 
+ * @param {Array[media]} medias 
+ * @param {object} photographer 
+ */
+async function displayInsert(medias, photographer){
+    const insert = document.createElement('article')
+    insert.classList.add('insert')
+
+    let likes = 0
+    medias.forEach(media => {
+        likes += media.likes 
+    })
+    
+    insert.innerHTML = `
+        <p><span>${likes}</span> <i class="fa-solid fa-heart"></i></p>
+        <p>${photographer.price}€ / jour</p>
+    `
+    document.querySelector('body').appendChild(insert)
+
+    return likes
+}
+
+/**
+ * Affiche la lightbox lors du clique sur l'un des medias
+ */
 async function displayLightBox(){
-    const medias = document.querySelectorAll("[media-index]")
+    const medias = document.querySelectorAll('[media-index]')
     medias.forEach(media => {
         media.addEventListener("click", (e) => {
             e.preventDefault()
@@ -32,38 +99,25 @@ async function displayLightBox(){
     })
 }
 
-async function getphotographerIdFromUrl() {
-    return new URL(location.href).searchParams.get("id")
-}
-
-async function getPhotographer(photographerId) {
-    //récupération de photographe dans le fichier.
-
-    const photographer = await new PhotographersApi().getPhotographersById(photographerId)
-    return photographer
-}
-
-async function displayData(photographer) {
-    photographerHeaderTemplate(photographer)
-}
-
-async function getMedias(Id) {
-    return await new MediasApi().getMedias(Id)
-}
-
+/**
+ * 
+ * @param {Array[media]} medias 
+ * @param {string} type 
+ * @returns {Array[filteredMedia]}
+ */
 function getFilteredMedia(medias, type) {
-    const filterMedia = []
+    const filteredMedia = []
 
     medias.forEach(media => {
         if (Object.hasOwn(media, type)) {
-            filterMedia.push(new MediaFactory(media, type))
+            filteredMedia.push(new MediaFactory(media, type))
         }
     })
 
-    return filterMedia
+    return filteredMedia
 }
 
-function displayPhotos(photos, videos, mediasWrapper) {
+function displayMedias(photos, videos, mediasWrapper) {
     let mediaIndex = 0
     
     photos.forEach(photo => {
@@ -77,11 +131,6 @@ function displayPhotos(photos, videos, mediasWrapper) {
         videoTemplate.displayVideoTemplate()
         mediaIndex++
     })
-}
-
-function displayNameInContactModal(photographer){
-    const modalHeader = document.querySelector(".modal h2")
-    modalHeader.innerHTML += `<br>${photographer.name}`
 }
 
 init()

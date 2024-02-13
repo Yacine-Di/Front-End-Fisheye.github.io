@@ -6,15 +6,15 @@ class LightboxModal {
 
         this.modalWrapper = document.querySelector('body')
         this.modalWrapper.appendChild(this.lightboxWrapper)
-
-        const child = this.getChild(this._media.tagName)
-        this.lightboxWrapper.querySelector('.icon_img-article').appendChild(child)
+        
+        const htmlChild = this.getChild(this._media.tagName)
+        this.lightboxWrapper.querySelector('.icon_img-article').appendChild(htmlChild)
 
         this.onKeyDown = this.onKeyDown.bind(this)
         document.addEventListener('keydown', this.onKeyDown)
 
     }
-
+        
     createModal() {
         const dom = document.createElement("article")
         dom.classList.add('media-modal')
@@ -88,6 +88,11 @@ class LightboxModal {
         titleNode.innerHTML = this._media.title
     }
 
+    /**
+     * 
+     * @param {STRING} tagName 
+     * @returns {Image / Video}
+     */
     getChild(tagName){
         if(tagName === 'IMG'){
             const img = new Image()

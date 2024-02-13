@@ -7,12 +7,12 @@ class VideoTemplate{
 
     displayVideoTemplate() {
             const player = `
-                <video controls media-index="${this._mediaIndex}" title="${this._video.title}">
+                <video media-index="${this._mediaIndex}" title="${this._video.title}">
                     <source src="${this._video.path}" type="video/mp4"/>
                 </video>
                 <article>
                     <p>${this._video.title}</p>
-                    <p>${this._video.likes} <i class="fa-solid fa-heart"></i></p>
+                    <p><span>${this._video.likes}</span> <i class="fa-solid fa-heart" liked="false"></i></p>
                 </article>
             `
             const videoWrapper = document.createElement('article')
