@@ -125,16 +125,11 @@ main{
     border-radius: 5px;
     padding-left: 20px;
     display: inline-block;
-
 }
+
 .sorter-form .divider{
-	font-size: 1px;
-    background: rgba(255, 255, 255, 0.5);
-    
-}
-
-select option{
-    font-size: 80px;
+	font-size: 0.5px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .sorter-form option,
