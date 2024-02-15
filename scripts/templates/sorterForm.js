@@ -2,13 +2,18 @@
  * @param {Array[media]} medias tableau de media du photographe
 */
 class SorterForm{
-    constructor(medias){
+    constructor(medias, likes){
         this._medias = medias
+        this._likes = likes
 
         this.wrapper = document.querySelector('.sorter-form-wrapper')
         this.mediaWrapper = document.querySelector('.medias-wrapper')
     }
-
+    
+    /**
+     * Fonction réaffichant les medias avec leurs fonctionnalités
+     * @param {String} sorter Valeur de trie du formulaire
+     */
     sorterMedias(sorter){
         this.clearMediasWrapper()
         let sortedMedias = []
@@ -35,6 +40,10 @@ class SorterForm{
                 mediaIndex++
              }
         })
+
+        displayLightBox()
+        document.querySelector('.insert span').innerHTML = this._likes
+        manageLikes()
     }
 
     /**

@@ -130,7 +130,6 @@ main{
 .sorter-form .divider{
 	font-size: 1px;
     background: rgba(255, 255, 255, 0.5);
-    background-repeat: no-repeat;
     
 }
 
@@ -223,19 +222,23 @@ select option{
 
 .chevron_xmark-article {
     display: grid;
-    grid-template-rows: 45% 50%;
+    grid-template-rows: 46% 50%;
     padding-top: 10px;
 }
 
 .lightbox .media{
     width: 1050px;
-    height: 900px;
+    height: 90vh;
     margin: 0px;
     object-fit: cover;
 }
 
 .close-btn, .left-media, .right-media{
     cursor: pointer;
+}
+
+.right-media{
+    margin: 0 auto;
 }
 
 /*Modal*/

@@ -19,14 +19,14 @@ async function init() {
     const mediasWrapper = document.querySelector('.medias-wrapper')
     displayMedias(photos, videos, mediasWrapper)
 
-    manageLikes(likes)
+    manageLikes()
     //affichage du nom dans la modal de contact
     const modalHeader = document.querySelector('.modal h2')
     modalHeader.innerHTML += `<br>${photographer.name}`
     
     await displayLightBox()
 
-    const Sorter = new SorterForm(medias)
+    const Sorter = new SorterForm(medias,likes)
     Sorter.createSorterForm()
 }
 
@@ -38,7 +38,6 @@ async function manageLikes(){
             like.addEventListener('click', (e) => {
                 e.preventDefault()
                 
-                console.log(like.getAttribute('liked'))
                 if(like.getAttribute('liked') === "false"){
                     updateLikes(1, e, insertLikesNode)
                     like.setAttribute('liked', "true")

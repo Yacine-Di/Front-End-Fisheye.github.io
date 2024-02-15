@@ -43,37 +43,27 @@ class LightboxModal {
     }
 
     /**
-     * Met à jour la lightbox avec le media suivant
+     * Passe au media suivant et met à jour et la lightbox avec l'index
      * @param {MouseEvent / KeyboardEvent} e 
      */
     next(e) {
         e.preventDefault()
-        const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
-        const childNode = this.lightboxWrapper.querySelector('.media')
-        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
         let index = this._media.getAttribute('media-index')
-
         index++
         if (index == this._medias.length) {
             index = 0
         }
         this._media = this._medias[index]
-        
-        parentNode.removeChild(childNode)
-        parentNode.appendChild(this.getChild(this._media.tagName))
-        titleNode.innerHTML = ""
-        titleNode.innerHTML = this._media.title
+        this.changeMedia()
     }
     
     /**
-     * Met à jour la lightbox avec le media precedent
+     * Passe au media précédent et met à jour et la lightbox avec l'index
      * @param {MouseEvent / KeyboardEvent} e 
      */
     prev(e) {
         e.preventDefault()
-        const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
-        const childNode = this.lightboxWrapper.querySelector('.media')
-        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
+
         let index = this._media.getAttribute('media-index')
 
         index--
@@ -81,7 +71,17 @@ class LightboxModal {
             index = this._medias.length - 1
         }
         this._media = this._medias[index]
-        
+        this.changeMedia()
+    }
+
+    /**
+     * Met à jour l'affichage de la lightbox
+     */
+    changeMedia(){
+        const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
+        const childNode = this.lightboxWrapper.querySelector('.media')
+        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
+
         parentNode.removeChild(childNode)
         parentNode.appendChild(this.getChild(this._media.tagName))
         titleNode.innerHTML = ""
