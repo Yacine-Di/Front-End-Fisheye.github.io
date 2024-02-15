@@ -64,7 +64,7 @@ class SorterForm{
      */
     createSorterForm(){
         const sorterFrom = `
-            <form action="#" method="POST" class="sorter-form">
+            <form action="#" method="POST" class="sorter-form" aria-label="Order by">
                 <label for="sorter-select">Triez par</label>
                 <select name="sorter-select" id="sorter-select">
                     <option value="POPULARITY">Popularité</option>

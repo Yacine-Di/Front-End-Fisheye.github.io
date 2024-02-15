@@ -14,6 +14,7 @@ function photographerTemplate(data) {
         
         const link = document.createElement('a')
         link.href = `photographer.html?id=${id}`
+        link.setAttribute('aria-label', name)
         link.appendChild(img);
         link.appendChild(h2);
 

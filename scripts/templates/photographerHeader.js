@@ -17,7 +17,7 @@ function photographerHeaderTemplate(photographer){
 
     const img = document.createElement('img')
     img.setAttribute("src", picture)
-    img.setAttribute("alt", `picture of: ${name}`)
+    img.setAttribute("alt", name)
 
     const button = document.querySelector(".contact_button")
     photographerHeader.prepend(article, button)
