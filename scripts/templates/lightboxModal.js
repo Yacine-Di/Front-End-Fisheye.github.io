@@ -18,15 +18,16 @@ class LightboxModal {
     createModal() {
         const dom = document.createElement("article")
         dom.classList.add('media-modal')
+        dom.setAttribute('aria-label', "image closeup view")
 
         const lightbox = `
             <article class="lightbox">
                 <article class="icon_img-article">
-                    <img class = "left-media" src="assets/icons/chevron-left.svg" alt="">
+                    <img class = "left-media" src="assets/icons/chevron-left.svg" alt="Previous image">
                 </article>
                 <article class="chevron_xmark-article">
-                    <img class="close-btn" src="assets/icons/close-red.svg" alt="">
-                    <img class= "right-media" src="assets/icons/chevron-right.svg" alt="">
+                    <img class="close-btn" src="assets/icons/close-red.svg" alt="Close dialog">
+                    <img class= "right-media" src="assets/icons/chevron-right.svg" alt="Next image">
                 </article>
             </article>
             <p>${this._media.title}</p>
@@ -106,6 +107,7 @@ class LightboxModal {
             const source = document.createElement('source')
             video.classList.add('media')
             video.controls = "controls"
+            video.setAttribute('aria-label', this._media.title)
             source.setAttribute('type', 'video/mp4')
             source.src = this._media.currentSrc
             video.appendChild(source)

@@ -1,11 +1,16 @@
+const mainWrapper = document.querySelector('#main')
+const modal = document.getElementById("contact_modal")
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+    mainWrapper.setAttribute('aria-hidden', 'true')
+    modal.setAttribute('aria-hidden', 'false')
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    modal.setAttribute('aria-hidden', 'true')
+    modal.style.display = "none"
+    mainWrapper.setAttribute('aria-hidden', 'false')
 }
 
 const form = document.querySelector("form")
