@@ -1,13 +1,15 @@
+/* eslint-disable no-undef */
 /** 
  * @param {Array[media]} medias tableau de media du photographe
 */
+// eslint-disable-next-line no-unused-vars
 class SorterForm{
     constructor(medias, likes){
         this._medias = medias
         this._likes = likes
 
-        this.wrapper = document.querySelector('.sorter-form-wrapper')
-        this.mediaWrapper = document.querySelector('.medias-wrapper')
+        this.wrapper = document.querySelector(".sorter-form-wrapper")
+        this.mediaWrapper = document.querySelector(".medias-wrapper")
     }
     
     /**
@@ -19,30 +21,30 @@ class SorterForm{
         let sortedMedias = []
         let mediaIndex = 0
 
-        if(sorter === 'POPULARITY'){
+        if(sorter === "POPULARITY"){
             sortedMedias = Array.from(this._medias).sort((a,b) => b.likes - a.likes)
-        } else if(sorter === 'DATE'){
+        } else if(sorter === "DATE"){
             sortedMedias = Array.from(this._medias).sort((a,b) => new Date(a.date) - new Date(b.date))
-        } else if(sorter === 'TITLE'){
+        } else if(sorter === "TITLE"){
             sortedMedias = Array.from(this._medias).sort((a,b) => a.title.localeCompare(b.title))
         }
 
         sortedMedias.forEach(media =>{
-            if('image' in media){
-                let photo = new MediaFactory(media, 'image')
+            if("image" in media){
+                let photo = new MediaFactory(media, "image")
                 const photoTemplate = new PhotoTemplate(photo, this.mediaWrapper, mediaIndex)
                 photoTemplate.displayPhotoTemplate()
                 mediaIndex++
-             } else{
-                let video = new MediaFactory(media, 'video')
+            } else{
+                let video = new MediaFactory(media, "video")
                 const videoTemplate = new VideoTemplate(video, this.mediaWrapper, mediaIndex)
                 videoTemplate.displayVideoTemplate()
                 mediaIndex++
-             }
+            }
         })
 
         displayLightBox()
-        document.querySelector('.insert span').innerHTML = this._likes
+        document.querySelector(".insert span").innerHTML = this._likes
         manageLikes()
     }
 
@@ -50,7 +52,7 @@ class SorterForm{
      * Gère l'évènement du formulaire
      */
     onChangeSorter(){
-        this.wrapper.querySelector('form').addEventListener('change', e =>{
+        this.wrapper.querySelector("form").addEventListener("change", e =>{
             const sorter = e.target.value
             this.sorterMedias(sorter)
         })

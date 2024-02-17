@@ -1,10 +1,12 @@
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
 class DataApi {
     /**
      * 
      * @param {string} url 
      */
     constructor() {
-        this._url = "data/photographers.json"
+        this._url = "data/photographers.json";
     }
 
     async get() {
@@ -19,7 +21,7 @@ class PhotographersApi extends DataApi {
     }
 
     async getPhotographers() {
-        return await this.get().then(res => res.photographers)
+        return await this.get().then(res => res.photographers);
     }
 
     async getPhotographersById(photographerId) {

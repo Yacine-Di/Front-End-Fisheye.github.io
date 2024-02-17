@@ -1,28 +1,30 @@
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
 class LightboxModal {
     constructor(media, medias) {
         this._media = media
         this._medias = medias
-        this.main = document.querySelector('main')
+        this.main = document.querySelector("main")
         this.lightboxWrapper = this.createModal()
 
-        this.modalWrapper = document.querySelector('body')
+        this.modalWrapper = document.querySelector("body")
         this.modalWrapper.appendChild(this.lightboxWrapper)
-        this.modalWrapper.classList.add('no-scroll')
+        this.modalWrapper.classList.add("no-scroll")
         
         const htmlChild = this.getChild(this._media.tagName)
-        this.lightboxWrapper.querySelector('.icon_img-article').appendChild(htmlChild)
+        this.lightboxWrapper.querySelector(".icon_img-article").appendChild(htmlChild)
 
         this.onKeyDown = this.onKeyDown.bind(this)
-        document.addEventListener('keydown', this.onKeyDown)
+        document.addEventListener("keydown", this.onKeyDown)
 
     }
         
     createModal() {
         const dom = document.createElement("article")
-        dom.classList.add('media-modal')
-        dom.setAttribute('aria-label', "image closeup view")
-        dom.setAttribute('aria-hidden', 'false')
-        this.main.setAttribute('aria-hidden', 'true')
+        dom.classList.add("media-modal")
+        dom.setAttribute("aria-label", "image closeup view")
+        dom.setAttribute("aria-hidden", "false")
+        this.main.setAttribute("aria-hidden", "true")
 
         const lightbox = `
             <article class="lightbox">
@@ -54,7 +56,7 @@ class LightboxModal {
     next(e) {
         e.preventDefault()
 
-        let index = this._media.getAttribute('media-index')
+        let index = this._media.getAttribute("media-index")
         index++
         if (index == this._medias.length) {
             index = 0
@@ -70,7 +72,7 @@ class LightboxModal {
     prev(e) {
         e.preventDefault()
 
-        let index = this._media.getAttribute('media-index')
+        let index = this._media.getAttribute("media-index")
         index--
         if (index < 0) {
             index = this._medias.length - 1
@@ -83,9 +85,9 @@ class LightboxModal {
      * Met à jour l'affichage de la lightbox
      */
     changeMedia(){
-        const parentNode = this.lightboxWrapper.querySelector('.icon_img-article')
-        const childNode = this.lightboxWrapper.querySelector('.media')
-        const titleNode = this.lightboxWrapper.querySelector('.media-modal p')
+        const parentNode = this.lightboxWrapper.querySelector(".icon_img-article")
+        const childNode = this.lightboxWrapper.querySelector(".media")
+        const titleNode = this.lightboxWrapper.querySelector(".media-modal p")
 
         parentNode.removeChild(childNode)
         parentNode.appendChild(this.getChild(this._media.tagName))
@@ -99,20 +101,20 @@ class LightboxModal {
      * @returns {Image / Video}
      */
     getChild(tagName){
-        if(tagName === 'IMG'){
+        if(tagName === "IMG"){
             const img = new Image()
             img.src = this._media.src
             img.alt = this._media.title
-            img.classList.add('media')
+            img.classList.add("media")
 
             return img
         } else{
-            const video = document.createElement('video')
-            const source = document.createElement('source')
-            video.classList.add('media')
+            const video = document.createElement("video")
+            const source = document.createElement("source")
+            video.classList.add("media")
             video.controls = "controls"
-            video.setAttribute('aria-label', this._media.title)
-            source.setAttribute('type', 'video/mp4')
+            video.setAttribute("aria-label", this._media.title)
+            source.setAttribute("type", "video/mp4")
             source.src = this._media.currentSrc
             video.appendChild(source)
 
@@ -126,12 +128,12 @@ class LightboxModal {
      */
     closeModal(e) {
         e.preventDefault()
-        this.lightboxWrapper.setAttribute('aria-hidden', 'true')
+        this.lightboxWrapper.setAttribute("aria-hidden", "true")
         this.lightboxWrapper.style.display = "none"
         this.lightboxWrapper.parentElement.removeChild(this.lightboxWrapper)
-        document.removeEventListener('keydown', this.onKeyDown)
-        this.modalWrapper.classList.remove('no-scroll')
-        this.main.setAttribute('aria-hidden', 'false')
+        document.removeEventListener("keydown", this.onKeyDown)
+        this.modalWrapper.classList.remove("no-scroll")
+        this.main.setAttribute("aria-hidden", "false")
     }
 
     /**
@@ -139,13 +141,13 @@ class LightboxModal {
      * @param {KeyboardEvent} e 
      */
     onKeyDown(e) {
-        const isHidden= document.querySelector('.media-modal').getAttribute('aria-hidden')
+        const isHidden= document.querySelector(".media-modal").getAttribute("aria-hidden")
         
-        if (e.key === 'Escape' && isHidden == 'false') {
+        if (e.key === "Escape" && isHidden == "false") {
             this.closeModal(e)
-        } else if(e.key === 'ArrowRight' && isHidden == 'false'){
+        } else if(e.key === "ArrowRight" && isHidden == "false"){
             this.next(e)
-        } else if(e.key === 'ArrowLeft' && isHidden == 'false'){
+        } else if(e.key === "ArrowLeft" && isHidden == "false"){
             this.prev(e)
         }
     }

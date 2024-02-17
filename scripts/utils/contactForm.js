@@ -1,31 +1,32 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable semi */
 //Variables Globales
-const mainWrapper = document.querySelector('#main')
-const modal = document.getElementById('contact_modal')
-const closeButton = document.querySelector('.close-btn')
-
+const mainWrapper = document.querySelector("#main")
+const modal = document.getElementById("contact_modal")
 
 function displayModal() {
-	modal.style.display = "block";
-    mainWrapper.setAttribute('aria-hidden', 'true')
-    modal.setAttribute('aria-hidden', 'false')
-    document.body.classList.add('no-scroll')
+    modal.style.display = "block";
+    mainWrapper.setAttribute("aria-hidden", "true")
+    modal.setAttribute("aria-hidden", "false")
+    document.body.classList.add("no-scroll")
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
         onKeyDown(e)
     })
 }
 
 function onKeyDown(e){
-    if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false'){
+    if(e.key === "Escape" && modal.getAttribute("aria-hidden") === "false"){
         closeModal()
     }
 }
 
 function closeModal() {
-    modal.setAttribute('aria-hidden', 'true')
+    modal.setAttribute("aria-hidden", "true")
     modal.style.display = "none"
-    mainWrapper.setAttribute('aria-hidden', 'false')
-    document.body.classList.remove('no-scroll')
+    mainWrapper.setAttribute("aria-hidden", "false")
+    document.body.classList.remove("no-scroll")
 }
 
 /**

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 class VideoTemplate{
     constructor(video, mediasWrapper, mediaIndex){
         this._video = video
@@ -6,7 +7,7 @@ class VideoTemplate{
     }
 
     displayVideoTemplate() {
-            const player = `
+        const player = `
                 <video media-index="${this._mediaIndex}" title="${this._video.title}" aria-label="${this._video.title}">
                     <source src="${this._video.path}" type="video/mp4"/>
                 </video>
@@ -15,8 +16,8 @@ class VideoTemplate{
                     <p><span>${this._video.likes}</span> <i class="fa-solid fa-heart" liked="false" aria-label="likes"></i></p>
                 </article>
             `
-            const videoWrapper = document.createElement('article')
-            videoWrapper.innerHTML = player
-            this._mediasWrapper.appendChild(videoWrapper)
+        const videoWrapper = document.createElement("article")
+        videoWrapper.innerHTML = player
+        this._mediasWrapper.appendChild(videoWrapper)
     }
 }
