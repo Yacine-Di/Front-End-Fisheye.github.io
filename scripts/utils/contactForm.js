@@ -5,12 +5,14 @@ function displayModal() {
 	modal.style.display = "block";
     mainWrapper.setAttribute('aria-hidden', 'true')
     modal.setAttribute('aria-hidden', 'false')
+    document.body.classList.add('no-scroll')
 }
 
 function closeModal() {
     modal.setAttribute('aria-hidden', 'true')
     modal.style.display = "none"
     mainWrapper.setAttribute('aria-hidden', 'false')
+    document.body.classList.remove('no-scroll')
 }
 
 const form = document.querySelector("form")

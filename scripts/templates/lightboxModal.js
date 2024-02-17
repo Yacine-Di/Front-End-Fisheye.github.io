@@ -6,6 +6,7 @@ class LightboxModal {
 
         this.modalWrapper = document.querySelector('body')
         this.modalWrapper.appendChild(this.lightboxWrapper)
+        this.modalWrapper.classList.add('no-scroll')
         
         const htmlChild = this.getChild(this._media.tagName)
         this.lightboxWrapper.querySelector('.icon_img-article').appendChild(htmlChild)
@@ -19,6 +20,7 @@ class LightboxModal {
         const dom = document.createElement("article")
         dom.classList.add('media-modal')
         dom.setAttribute('aria-label', "image closeup view")
+        dom.setAttribute('aria-hidden', 'false')
 
         const lightbox = `
             <article class="lightbox">
@@ -39,7 +41,7 @@ class LightboxModal {
         dom.querySelector(".close-btn").addEventListener("click", this.closeModal.bind(this))
         dom.querySelector(".left-media").addEventListener("click", this.prev.bind(this))
         dom.querySelector(".right-media").addEventListener("click", this.next.bind(this))
-
+        
         return dom
     }
 
@@ -122,9 +124,11 @@ class LightboxModal {
      */
     closeModal(e) {
         e.preventDefault()
+        this.lightboxWrapper.setAttribute('aria-hidden', 'true')
         this.lightboxWrapper.style.display = "none"
         this.lightboxWrapper.parentElement.removeChild(this.lightboxWrapper)
         document.removeEventListener('keydown', this.onKeyDown)
+        this.modalWrapper.classList.remove('no-scroll')
     }
 
     /**
@@ -132,7 +136,8 @@ class LightboxModal {
      * @param {KeyboardEvent} e 
      */
     onKeyDown(e) {
-        if (e.key === 'Escape') {
+        const bool = document.querySelector('.media-modal').getAttribute('aria-hidden')
+        if (e.key === 'Escape' && bool == 'false') {
             this.closeModal(e)
         } else if(e.key === 'ArrowRight'){
             this.next(e)
