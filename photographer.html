@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
   </header>
   <main id="main" aria-hidden="false">
     <div class="photographer-header">
@@ -21,28 +21,28 @@
     <section class="sorter-form-wrapper"></section>
     <section class="medias-wrapper"></section>
   </main>
-  <div id="contact_modal" aria-hidden="true" role="dialog">
+  <div id="contact_modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
+        <h2 id="modalTitle">Contactez-moi</h2>
+        <img class="close-btn" src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
       </header>
       <form>
         <div>
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" aria-label="prenom" required/>
+          <label id="prenom" for="firstName">Prénom</label>
+          <input type="text" id="firstName" name="firstName" aria-labelledby="prenom" required />
         </div>
         <div>
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" aria-label="Last name" required/>
+          <label id="nom" for="lastName">Nom</label>
+          <input type="text" id="lastName" name="lastName" aria-labelledby="nom" required />
         </div>
         <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" aria-label="Email" required/>
+          <label id="mail" for="email">Email</label>
+          <input type="email" id="email" name="email" aria-labelledby="mail" required />
         </div>
         <div>
-          <label for="message">Votre message</label>
-          <textarea id="message" name="message" aria-label="Your message" required></textarea>
+          <label id="msg" for="message">Votre message</label>
+          <textarea id="message" name="message" aria-labelledby="msg" required></textarea>
         </div>
         <button class="contact_button" type="submit" aria-label="Send">Envoyer</button>
       </form>

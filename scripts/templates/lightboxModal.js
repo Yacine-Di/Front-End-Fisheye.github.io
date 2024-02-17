@@ -2,6 +2,7 @@ class LightboxModal {
     constructor(media, medias) {
         this._media = media
         this._medias = medias
+        this.main = document.querySelector('main')
         this.lightboxWrapper = this.createModal()
 
         this.modalWrapper = document.querySelector('body')
@@ -21,6 +22,7 @@ class LightboxModal {
         dom.classList.add('media-modal')
         dom.setAttribute('aria-label', "image closeup view")
         dom.setAttribute('aria-hidden', 'false')
+        this.main.setAttribute('aria-hidden', 'true')
 
         const lightbox = `
             <article class="lightbox">
@@ -51,6 +53,7 @@ class LightboxModal {
      */
     next(e) {
         e.preventDefault()
+
         let index = this._media.getAttribute('media-index')
         index++
         if (index == this._medias.length) {
@@ -68,7 +71,6 @@ class LightboxModal {
         e.preventDefault()
 
         let index = this._media.getAttribute('media-index')
-
         index--
         if (index < 0) {
             index = this._medias.length - 1
@@ -129,19 +131,21 @@ class LightboxModal {
         this.lightboxWrapper.parentElement.removeChild(this.lightboxWrapper)
         document.removeEventListener('keydown', this.onKeyDown)
         this.modalWrapper.classList.remove('no-scroll')
+        this.main.setAttribute('aria-hidden', 'false')
     }
 
     /**
-     * 
+     * Gere les interactions avec le clavier
      * @param {KeyboardEvent} e 
      */
     onKeyDown(e) {
-        const bool = document.querySelector('.media-modal').getAttribute('aria-hidden')
-        if (e.key === 'Escape' && bool == 'false') {
+        const isHidden= document.querySelector('.media-modal').getAttribute('aria-hidden')
+        
+        if (e.key === 'Escape' && isHidden == 'false') {
             this.closeModal(e)
-        } else if(e.key === 'ArrowRight'){
+        } else if(e.key === 'ArrowRight' && isHidden == 'false'){
             this.next(e)
-        } else if(e.key === 'ArrowLeft'){
+        } else if(e.key === 'ArrowLeft' && isHidden == 'false'){
             this.prev(e)
         }
     }
