@@ -97,7 +97,7 @@ class LightboxModal {
 
     /**
      * 
-     * @param {STRING} tagName 
+     * @param {STRING} tagName on vérifie si le media est une image ou une video
      * @returns {Image / Video}
      */
     getChild(tagName){

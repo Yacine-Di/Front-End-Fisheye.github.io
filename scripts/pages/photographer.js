@@ -16,7 +16,9 @@ async function init() {
     const photos = getFilteredMedia(medias, "image")
     const videos = getFilteredMedia(medias, "video")
 
+    //affichage de l'encart des likes totaux
     const likes = await displayInsert(medias, photographer)
+
     //affichage des medias
     const mediasWrapper = document.querySelector(".medias-wrapper")
     displayMedias(photos, videos, mediasWrapper)
@@ -52,6 +54,11 @@ async function manageLikes() {
         })
 }
 
+/**
+ * @param {number} value +1 ou -1 suivant si on ajout ou retire un like
+ * @param {MouseEvent} e click à la souris sur le coeur
+ * @param {Node} insertLikesNode la node contenant les likes à mettre à jour
+ */
 async function updateLikes(value, e, insertLikesNode) {
     let totalLikes = parseInt(insertLikesNode.innerText)
     totalLikes += value
