@@ -11,6 +11,7 @@ class PhotoTemplate{
 
         const imgWrapper = document.createElement("img")
         imgWrapper.setAttribute("src", this._photo.path)
+        imgWrapper.setAttribute("alt", this._photo.title)
         imgWrapper.setAttribute("title", this._photo.title)
         imgWrapper.setAttribute("media-index", this._mediaIndex)
         imgWrapper.setAttribute("aria-label", `${this._photo.title} closeup view`)

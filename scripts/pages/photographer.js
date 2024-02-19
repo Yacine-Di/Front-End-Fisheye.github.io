@@ -104,6 +104,13 @@ async function displayLightBox() {
             e.preventDefault()
             new LightboxModal(media, medias)
         })
+
+        media.addEventListener("keydown", (e) => {
+            e.preventDefault()
+            if(e.key === "Enter"){
+                new LightboxModal(media, medias)
+            }
+        })
     })
 }
 

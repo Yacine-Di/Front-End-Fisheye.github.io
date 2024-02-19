@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 async function getPhotographers() {
     //récupération des photographes dans le fichier.
-    return photographers = await new PhotographersApi().getPhotographers()
+    return await new PhotographersApi().getPhotographers()
 }
 
 async function displayData(photographers) {
