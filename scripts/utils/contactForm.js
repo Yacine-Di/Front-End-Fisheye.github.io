@@ -1,15 +1,16 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 /* eslint-disable semi */
 //Variables Globales
 const mainWrapper = document.querySelector("#main")
 const modal = document.getElementById("contact_modal")
 
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
     modal.style.display = "block";
     mainWrapper.setAttribute("aria-hidden", "true")
     modal.setAttribute("aria-hidden", "false")
     document.body.classList.add("no-scroll")
+    document.getElementById("prenom").focus()
 
     document.addEventListener("keydown", (e) => {
         onKeyDown(e)
