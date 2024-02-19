@@ -8,13 +8,17 @@ class PhotoTemplate{
 
     displayPhotoTemplate(){
         const mediaWrapper = document.createElement("article")
-
+        const link = document.createElement("a")
+        link.href = "#"
+        link.setAttribute("aria-label", `Press enter to open closeup view of ${this._photo.title}"`)
+        
         const imgWrapper = document.createElement("img")
         imgWrapper.setAttribute("src", this._photo.path)
         imgWrapper.setAttribute("alt", this._photo.title)
         imgWrapper.setAttribute("title", this._photo.title)
         imgWrapper.setAttribute("media-index", this._mediaIndex)
         imgWrapper.setAttribute("aria-label", `${this._photo.title} closeup view`)
+        link.appendChild(imgWrapper)
 
         const titleAndLikeWrapper = document.createElement("article")
         const title = document.createElement("p")
@@ -24,7 +28,7 @@ class PhotoTemplate{
         like.innerHTML = `<span>${this._photo.likes}</span> ${heartIcon}`
         titleAndLikeWrapper.append(title, like)
 
-        mediaWrapper.append(imgWrapper, titleAndLikeWrapper)
+        mediaWrapper.append(link, titleAndLikeWrapper)
         this._mediasWrapper.appendChild(mediaWrapper)
     }
 }

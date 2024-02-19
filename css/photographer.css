@@ -156,8 +156,8 @@ main{
     margin-bottom: 20px;
 }
 
-.medias-wrapper article img
-,.medias-wrapper article video{
+.medias-wrapper article img,
+.medias-wrapper article video{
     width: 350px;
     height: 300px;
     object-fit: cover;

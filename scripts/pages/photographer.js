@@ -99,15 +99,16 @@ async function displayInsert(medias, photographer) {
  */
 async function displayLightBox() {
     const medias = document.querySelectorAll("[media-index]")
+
     medias.forEach(media => {
         media.addEventListener("click", (e) => {
             e.preventDefault()
             new LightboxModal(media, medias)
         })
 
-        media.addEventListener("keydown", (e) => {
-            e.preventDefault()
-            if(e.key === "Enter"){
+        media.parentNode.addEventListener("keydown", (e) => {
+            //pas de e.preventdefault() sinon le TAB ne se bloque
+            if (e.key === "Enter") {
                 new LightboxModal(media, medias)
             }
         })

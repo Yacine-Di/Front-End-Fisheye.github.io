@@ -8,9 +8,11 @@ class VideoTemplate{
 
     displayVideoTemplate() {
         const player = `
-                <video media-index="${this._mediaIndex}" title="${this._video.title}" aria-label="${this._video.title}">
-                    <source src="${this._video.path}" type="video/mp4"/>
-                </video>
+                <a href="#" aria-label="Press enter to open closeup view of ${this._video.title}"> 
+                    <video media-index="${this._mediaIndex}" title="${this._video.title}" aria-label="${this._video.title}">
+                        <source src="${this._video.path}" type="video/mp4"/>
+                    </video>
+                </a>
                 <article>
                     <p>${this._video.title}</p>
                     <p><span>${this._video.likes}</span> <i class="fa-solid fa-heart" liked="false" aria-label="likes"></i></p>

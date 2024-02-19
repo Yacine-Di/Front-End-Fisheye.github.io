@@ -10,7 +10,7 @@ class LightboxModal {
         this.modalWrapper = document.querySelector("body")
         this.modalWrapper.appendChild(this.lightboxWrapper)
         this.modalWrapper.classList.add("no-scroll")
-        
+
         const htmlChild = this.getChild(this._media.tagName)
         this.lightboxWrapper.querySelector(".icon_img-article").appendChild(htmlChild)
 
@@ -18,7 +18,7 @@ class LightboxModal {
         document.addEventListener("keydown", this.onKeyDown)
 
     }
-        
+
     createModal() {
         const dom = document.createElement("article")
         dom.classList.add("media-modal")
@@ -45,7 +45,7 @@ class LightboxModal {
         dom.querySelector(".close-btn").addEventListener("click", this.closeModal.bind(this))
         dom.querySelector(".left-media").addEventListener("click", this.prev.bind(this))
         dom.querySelector(".right-media").addEventListener("click", this.next.bind(this))
-        
+
         return dom
     }
 
@@ -64,7 +64,7 @@ class LightboxModal {
         this._media = this._medias[index]
         this.changeMedia()
     }
-    
+
     /**
      * Passe au media précédent et met à jour et la lightbox avec l'index
      * @param {MouseEvent / KeyboardEvent} e 
@@ -84,7 +84,7 @@ class LightboxModal {
     /**
      * Met à jour l'affichage de la lightbox
      */
-    changeMedia(){
+    changeMedia() {
         const parentNode = this.lightboxWrapper.querySelector(".icon_img-article")
         const childNode = this.lightboxWrapper.querySelector(".media")
         const titleNode = this.lightboxWrapper.querySelector(".media-modal p")
@@ -100,15 +100,15 @@ class LightboxModal {
      * @param {STRING} tagName on vérifie si le media est une image ou une video
      * @returns {Image / Video}
      */
-    getChild(tagName){
-        if(tagName === "IMG"){
+    getChild(tagName) {
+        if (tagName === "IMG") {
             const img = new Image()
             img.src = this._media.src
             img.alt = this._media.title
             img.classList.add("media")
 
             return img
-        } else{
+        } else {
             const video = document.createElement("video")
             const source = document.createElement("source")
             video.classList.add("media")
@@ -118,6 +118,17 @@ class LightboxModal {
             source.src = this._media.currentSrc
             video.appendChild(source)
 
+            video.addEventListener("keydown", (e) => {
+                e.preventDefault()
+                if (e.code == "Space") {
+                    if(video.paused){
+                        video.play()
+                    } else {
+                        video.pause()
+                    }
+                }
+            })
+            
             return video
         }
     }
@@ -141,13 +152,13 @@ class LightboxModal {
      * @param {KeyboardEvent} e 
      */
     onKeyDown(e) {
-        const isHidden= document.querySelector(".media-modal").getAttribute("aria-hidden")
-        
+        const isHidden = document.querySelector(".media-modal").getAttribute("aria-hidden")
+
         if (e.key === "Escape" && isHidden == "false") {
             this.closeModal(e)
-        } else if(e.key === "ArrowRight" && isHidden == "false"){
+        } else if (e.key === "ArrowRight" && isHidden == "false") {
             this.next(e)
-        } else if(e.key === "ArrowLeft" && isHidden == "false"){
+        } else if (e.key === "ArrowLeft" && isHidden == "false") {
             this.prev(e)
         }
     }
