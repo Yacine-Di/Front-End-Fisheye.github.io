@@ -13,7 +13,7 @@ Front-End project about accessibility.
 - JS Vanilla
 ## Check it
 
-[Fisheye](https://yacine-di.github.io/Front-End-Fisheye.github.io/index.html)
+[Fisheye](https://yacine-di.github.io/Front-End-Fisheye.github.io/)
 ## Installation
 
 Just clone the project and run it on LiveServer
