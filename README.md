@@ -32,13 +32,13 @@ During this project I learned how to use JS with multiples designs patterns like
 ## Screenshots
 
 Home page <br>
-<img src="assets/screenshot/fisheye1.png" width="600" />
+<img src="assets/screenshots/fisheye1.png" width="600" />
 
 Photographer page <br>
-<img src="assets/screenshot/fisheye2.png" width="600" />
+<img src="assets/screenshots/fisheye2.png" width="600" />
 
 Video modal <br>
-<img src="assets/screenshot/fisheye3.png" width="600" />
+<img src="assets/screenshots/fisheye3.png" width="600" />
 
 ## Authors
 
