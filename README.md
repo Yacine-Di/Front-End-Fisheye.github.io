@@ -4,16 +4,19 @@
 
 ## Description
 
-FishEye is a website to check freelance photo.
+FishEye is a plateform for freelance photographers.
 Front-End project about accessibility.
+
 ## Stack
 
 - HTML
 - CSS
 - JS Vanilla
+
 ## Check it
 
 [Fisheye](https://yacine-di.github.io/Front-End-Fisheye.github.io/)
+
 ## Installation
 
 Just clone the project and run it on LiveServer
